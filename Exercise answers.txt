@@ -79,7 +79,7 @@ Chapter 2 - Exercise 1:
 
    	radius x = pi * (x * x)
 
-Excercise 2:
+Exercise 2:
 1)	Below are some pairs of functions that are alike except for parenthesization.
 	Read them carefully and decide if the parentheses change
 	the results of the function. Check your work in GHCi.
@@ -99,7 +99,7 @@ a)	f x = x / 2 + 9
 b)	f x = x / (2 + 9)
 
 	The brackets will change the output. 
-Excercise 3:
+Exercise 3:
 1) 	let area x = 3. 14 * (x * x)
 	
 	Space between 3. and 14.
@@ -118,3 +118,122 @@ Excercise 3:
 	x = 7
 	y = 10
 	f = x + y
+
+Exercise 4:
+	Now for some exercises. First, determine in your head what the
+	following expressions will return, then validate in the REPL:
+
+1.	 let x = 5 in x 				5
+2.	 let x = 5 in x * x 			25
+3.	 let x = 5; y = 6 in x * y 		30
+4.	 let x = 3; y = 1000 in x + 3 	6
+
+mint
+
+	Rewrite with where clauses:
+1. 	let x = 3; y = 1000 in x * 3 + y
+	
+	func1   = x * 3 + y
+	where x = 3
+		  y = 1000
+
+2. 	let y = 10; x = 10 * 5 + y in x * 5
+
+	func2   = x * 5
+	where y = 10
+		  x = 10 * 5 + y
+
+3. 	let x = 7
+	y = negate x
+	z = y * 10
+	in z / x + y
+
+	func3 = z / x + y
+	where x = 7
+		  y = (negate x)
+		  z = y * 10
+
+Final exercise:
+
+1. Make more explicit:
+
+	1.	2 + 2 * 3 - 1
+		2 + (2 * 3) - 1
+
+	2. 	(^) 10 $ 1 + 1
+		10 ^ (1 + 1)
+
+	3. 	2 ^ 2 * 4 ^ 5 + 1
+		((2 ^ 2) * (4 ^ 5)) + 1
+
+2. 	Equivalent expressions
+	Which of the following pairs of expressions will return the same
+	result when evaluated? Try to reason them out by reading the code
+	and then enter them into the REPL to check your work:
+
+	1.	1 + 1  			-- Same result
+		2
+
+	2. 	10 ^ 2			-- Same result (100)
+		10 + 9 * 10
+
+	3. 	400 - 37		-- Not the same result as 400 - 37 != 37 - 400
+		(-) 37 400
+
+	4. 	100 `div` 3		-- Not the same result 100 `div` 3 would be 33 (or 34 idk) but 100/3 = 33.33333
+		100 / 3
+
+	5. 	2 * 5 + 18		-- Not the same as order of operations. 
+		2 * (5 + 18)
+
+
+3. 	Here is a bit of code as it might be entered into a source file.
+	Look at this code and rewrite it such that it
+	could be evaluated in the REPL (remember: you may need let when
+	entering it directly into the REPL). Be sure to enter your code into
+	the REPL to make sure it evaluates correctly:
+
+	z = 7
+	x = y ^ 2
+	waxOn = x * 5
+	y = z + 8
+
+	let z = 7
+	let y = z + 8
+	let x = y ^ 2
+	let waxOn = x * 5
+
+1. 	Now you have a value called waxOn in your REPL. What do you
+	think will happen if you enter: -- currently waxOn = 1125
+
+	10 + waxOn  	-- 1135 will output
+	-- or
+	(+10) waxOn 	-- 1135 will output
+	-- or
+	(-) 15 waxOn 	-- -1110 will output
+	-- or
+	(-) waxOn 15	-- 1110 will output
+
+2. 	Earlier we looked at a function called triple. While your REPL
+	has waxOn in session, re-enter the triple function at the prompt:
+	let triple x = x * 3
+
+3. 	Now, what will happen if we enter this at our GHCi prompt?
+	What do you think will happen first, considering what role waxOn
+	is playing in this function call? Then enter it, see what does
+	happen, and check your understanding:
+	
+	triple waxOn -- Will output waxOn * 3 
+
+4. 	Rewrite waxOn as an expression with a where clause in your source
+	file. Load it into your REPL and make sure it still works as
+	expected.
+
+	waxOn = x * 5 -- This code block didnt work for some reason, so after experimenting...
+	where x = y ^ 2
+		  y = z + 8
+		  z = 7
+
+	waxOn = x * 5 where z = 7; y = z + 8; x = y ^ 2 -- I came up with this
+
+
