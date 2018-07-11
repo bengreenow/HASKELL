@@ -61,3 +61,31 @@ Types / Strings:
 
 	The type of concat also specifically denies concat'ing different types of data,
 	i.e concat ["Hello", [2,7,8,1,9]] will fail I THINK whereas concat ["Hello", ['2','7','8','1','9']] is perf.
+
+    A : colon, builds lists. since a string IS a list, you can use it like so:
+        'C' : "hris"
+        = "chris"
+    also, the queue/stack functions work.
+        head "hello"
+        'h'
+        tail "hello"
+        "ello"
+    the take function is cool, it "takes" a given amount of items from a list,
+        take 3 "Hello"
+        "Hel"
+    And drop returns the remainder of the list after the specified number
+    of elements has been dropped:
+        drop 2 "Hello"
+        "llo"
+        drop 999 "Hello
+        ""
+    The infix operator, (!!), returns the element that is in the specified
+    position in the list.
+        "Hello" !! 1
+        e
+    Note that while all these functions are standard Prelude functions,
+    many of them are considered unsafe. They are unsafe because they
+    do not cover the case where they are given an empty list as input.
+    Instead they throw out an error message, or exception.
+
+

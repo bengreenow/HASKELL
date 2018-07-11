@@ -114,5 +114,24 @@ a)  -- Given
 ```
 ```haskell
     dropLast m = take x m
-        where x = (length m) - 1  -- Proud
+        where x = (length m) - 1  -- Proud of this function :)
+```
+```haskell
+b)  -- Given
+    "Curry is awesome!"
+    -- Return
+    "y"
+```
+```haskell
+fifthChar x = x !! 4
+```
+```haskell
+c)  -- Given
+    "Curry is awesome!"
+    -- Return
+    "awesome!"
+```
+```haskell
+    lastEightChars x = drop m x
+             where m = (length x) - 8 
 ```
