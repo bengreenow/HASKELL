@@ -45,9 +45,14 @@ Exercise 2:
 3)	Beta reduce Evaluate (that is, beta reduce) each of the following
 	expressions to normal form. We strongly recommend writing out
 	the steps on paper with a pencil or pen.
-	1. (𝜆𝑎𝑏𝑐.𝑐𝑏𝑎)𝑧𝑧(𝜆𝑤𝑣.𝑤)
-	2. (𝜆𝑥.𝜆𝑦.𝑥𝑦𝑦)(𝜆𝑎.𝑎)𝑏
-	3. (𝜆𝑦.𝑦)(𝜆𝑥.𝑥𝑥)(𝜆𝑧.𝑧𝑞)
+	1. (𝜆𝑎𝑏𝑐.𝑐𝑏𝑎)𝑧𝑧(𝜆𝑤𝑣.𝑤)	- (𝜆c.(c(𝜆v.zz))) -- First answer
+							- z -- Second answer			-- struggled with these
+	2. (𝜆𝑥.𝜆𝑦.𝑥𝑦𝑦)(𝜆𝑎.𝑎)𝑏	- bb
+	3. (𝜆𝑦.𝑦)(𝜆𝑥.𝑥𝑥)(𝜆𝑧.𝑧𝑞)	- qq
+	4. (𝜆𝑧.𝑧)(𝜆𝑧.𝑧𝑧)(𝜆𝑧.𝑧𝑦) 	- yy
+	5. (𝜆𝑥.𝜆𝑦.𝑥𝑦𝑦)(𝜆𝑦.𝑦)y  	- yy
+	6. (𝜆𝑎.𝑎𝑎)(𝜆𝑏.𝑏𝑎)c    	- caa
+	7. (𝜆𝑥𝑦𝑧.𝑥𝑧(𝑦𝑧))(𝜆𝑥.𝑧)(𝜆𝑥.𝑎) - 𝜆z.za
 
 Chapter 2 - Exercise 1:
 1)  Given the following lines of code as they might appear in a
