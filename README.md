@@ -1,2 +1,3 @@
-# HASKELL
-Working through the haskell book
+# Haskell
+
+Working through [Haskell Programming from first principles](http://haskellbook.com/).
