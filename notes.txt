@@ -1,6 +1,18 @@
-Notes:
+:q quit
+:t type
+:m module
+:l load
+
+Prelude> :set prompt "λ> "
+λ> :r
+Ok, modules loaded: Print1.
+λ> main
+hello world!
+λ>
+
 
 Lambda:
+
 	free variables are variables that dont appear in the head, and are generally left over if the function is used. 
 
 	A combinator is a function in which every term appears in the head and the body. ie
@@ -19,3 +31,33 @@ Lambda:
 
 	(𝜆𝑥.𝑥𝑥)(𝜆𝑥.𝑥𝑥)
 
+Types / Strings:
+
+	"::" = "has the type"
+	In haskell, a "String" is just an alias for a list of characters.
+	double quotarion marks mean a string. 
+	single quotation marks mean a char.
+	[Char] = a list of chars.
+	print function - works with all types of data
+	print x
+
+	putStrLn - works with just strings and adds \n to the end
+	putStrLn "hello world!"
+
+	putStr - works with just strings and omits the \n
+	putStr "hello world!"
+
+	main :: IO ()
+	main = do
+		-- Do stuff
+
+	the concatenation operator is ++
+		"Hi my name is " ++ name
+
+	where creates throwaway variables with a small scope. (local variables)
+
+	The type of concat says that we have a list of lists as input and we
+	will return a list.
+
+	The type of concat also specifically denies concat'ing different types of data,
+	i.e concat ["Hello", [2,7,8,1,9]] will fail I THINK whereas concat ["Hello", ['2','7','8','1','9']] is perf.
