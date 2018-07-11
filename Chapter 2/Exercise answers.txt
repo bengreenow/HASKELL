@@ -179,5 +179,8 @@ Final exercise:
 		  z = 7
 
 	waxOn = x * 5 where z = 7; y = z + 8; x = y ^ 2 -- I came up with this
+.
+.
+.
 
-
+7. Output = 3375
