@@ -1,0 +1,21 @@
+Notes:
+
+Lambda:
+	free variables are variables that dont appear in the head, and are generally left over if the function is used. 
+
+	A combinator is a function in which every term appears in the head and the body. ie
+	(lambda) x.x
+	or
+	(lambda) xym.xy -- despite m not bound to anything, this is still a combinator
+
+	(lambda) xy.xyz is NOT a combinator
+
+	combinators are used to combine functions together
+
+	Divergence: the reduction process never ends.
+	(𝜆𝑥.𝑥𝑥)(𝜆𝑥.𝑥𝑥)
+
+	([𝑥 ∶= (𝜆𝑥.𝑥𝑥)]𝑥𝑥)
+
+	(𝜆𝑥.𝑥𝑥)(𝜆𝑥.𝑥𝑥)
+
