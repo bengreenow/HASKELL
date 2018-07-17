@@ -12,17 +12,20 @@ Show allows the values of that type to be printed to the screen. We’ll
 talk about it more when we talk about typeclasses in detail.
 
 ### 1
+
 What is the type constructor, or name of this type?
 ---
 "`Mood`" is the type constructor.
 
 ### 2
+
 If the function requires a `Mood` value, what are the values you
 could possibly use?
 ---
 `Blah` or `Woot`
 
 ### 3
+
 We are trying to write a function `changeMood` to change Chris’s
 mood instantaneously. It should act like `not` in that, given one
 value, it returns the _other_ value of the same type. So far, we’ve
@@ -31,6 +34,7 @@ with that?
 ---
 In the type signiture, the _type_ of data being passed too and returned from a function is defined. In `changeMood :: Mood -> Woot`, while we are passing a `Mood` object _too_ the function, we haven't defined a `Woot` object. To correct this use `changeMood :: Mood -> Mood`
 ### 4
+
 Now we want to write the function that changes his mood. Given
 an input mood, it gives us the other one. Fix any mistakes and
 complete the function:
@@ -53,4 +57,19 @@ it can be convenient.
 changeMood Blah = Woot
 changeMood _ = Blah
 ```
+
+### 5
+
+Enter all of the above — datatype (including the deriving Show
+bit), your corrected type signature, and the corrected function
+into a source file. Load it and run it in GHCi to make sure you
+got it right.
+---
+```data Mood = Blah | Woot deriving Show
+
+changeMood :: Mood -> Mood
+changeMood Blah = Woot
+changeMood _ = Blah
+```
+---
 ![alt text](changeMoodCmd.png "Command Line")
