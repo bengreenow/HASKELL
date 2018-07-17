@@ -145,6 +145,7 @@ argument to your (named) functions. If you’re unsure how to
 do this, refresh your memory by looking at the waxOff exercise
 from the previous chapter and the TopOrLocal module from this
 chapter
+
 ---
 ```haskell
     dropLast m = take x m
@@ -164,6 +165,7 @@ and apply it to a variable, not a specific String, so that it could
 be reused for different String inputs, as demonstrated (feel free
 to name the function something else. Be sure to fill in the type
 signature and fill in the function definition after the equals sign):
+
 ---
 ```haskell
     thirdLetter :: String -> Char
@@ -189,6 +191,7 @@ using only what we’ve learned so far. First write it as a single
 function in a source file. This doesn’t need to, and shouldn’t,
 work for reversing the words of any sentence. You’re expected
 only to slice and dice this particular string with take and drop.
+
 ---
 ```haskell
 string :: String
@@ -208,6 +211,7 @@ also then export it to other modules if we want to and use this
 code in those other modules. There are different ways you
 could lay it out, but for the sake of convenience, we’ll show you
 a sample layout so that you can fill in the blanks:
+
 ---
 ```haskell
 module Reverse where
