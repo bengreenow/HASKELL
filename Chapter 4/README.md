@@ -65,6 +65,7 @@ changeMood Blah = Woot
 changeMood _ = Blah
 
 
+<<<<<<< HEAD
 
 
 $
@@ -146,3 +147,6 @@ d) length (concat allAwesome)
 
 
 
+=======
+![alt text](changeMoodCmd.png "Command Line")
+>>>>>>> parent of 2507079... Work
