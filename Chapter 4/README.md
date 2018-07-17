@@ -81,3 +81,15 @@ changeMood _ = Blah
 ---
 
 ![alt text](changeMoodCmd.png "Command Line")
+
+
+# Exercise 2: Find the Mistakes
+
+The following lines of code may have mistakes — some of
+them won’t compile! You know what you need to do.
+1. `not True && true` - the second True is not capitalized. `not True && True`
+2. `not (x = 6)` - a single = is the incorrect operator. `not (x==6)`
+3. `(1 * 2) > 5` - this will compile.
+4. [Merry] > [Happy]
+5. [1, 2, 3] ++ "look at me!"
+Conditionals with if-then-else
