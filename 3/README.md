@@ -135,3 +135,89 @@ c)  -- Given
     lastEightChars x = drop m x
              where m = (length x) - 8 
 ```
+
+### 2
+
+Now take each of the above and rewrite it in a source file as
+a general function that could take different string inputs as
+arguments but retain the same behavior. Use a variable as the
+argument to your (named) functions. If you’re unsure how to
+do this, refresh your memory by looking at the waxOff exercise
+from the previous chapter and the TopOrLocal module from this
+chapter
+
+```haskell
+    dropLast m = take x m
+        where x = (length m) - 1
+
+    fifthChar x = x !! 4
+
+    lastEightChars x = drop m x
+            where m = (length x) - 8 
+```
+
+### 3
+
+Write a function of type String -> Char which returns the third
+character in a String. Remember to give the function a name
+and apply it to a variable, not a specific String, so that it could
+be reused for different String inputs, as demonstrated (feel free
+to name the function something else. Be sure to fill in the type
+signature and fill in the function definition after the equals sign):
+
+```haskell
+    thirdLetter :: String -> Char
+    thirdLetter x = x !! 2
+```
+### 4
+
+Now change that function so the string operated on is always
+the same and the variable represents the number of the letter
+you want to return (you can use “Curry is awesome!” as your
+string input or a different string if you prefer).
+
+### 5
+
+Using the take and drop functions we looked at above, see if you
+can write a function called rvrs (an abbreviation of ‘reverse’ used
+because there is a function called ‘reverse’ already in Prelude,
+so if you call your function the same name, you’ll get an error
+message). rvrs should take the string “Curry is awesome” and
+return the result “awesome is Curry.” This may not be the most
+lovely Haskell code you will ever write, but it is quite possible
+using only what we’ve learned so far. First write it as a single
+function in a source file. This doesn’t need to, and shouldn’t,
+work for reversing the words of any sentence. You’re expected
+only to slice and dice this particular string with take and drop.
+
+```haskell
+string :: String
+string = "Curry is awesome"
+rvrs :: String
+rvrs = part3 ++ part2 ++ " " ++ part1
+    where part1 = take 5 string
+          part2 = take 3 $ drop 5 string
+          part3 = drop 9 string
+```
+
+### 6
+Let’s see if we can expand that function into a module. Why
+would we want to? By expanding it into a module, we can add
+more functions later that can interact with each other. We can
+also then export it to other modules if we want to and use this
+code in those other modules. There are different ways you
+could lay it out, but for the sake of convenience, we’ll show you
+a sample layout so that you can fill in the blanks:
+
+```haskell
+module Reverse where
+    string :: String
+    string = "Curry is awesome"
+    rvrs :: String -> String
+    rvrs x = part3 ++ part2 ++ " " ++ part1
+        where part1 = take 5 string
+              part2 = take 3 $ drop 5 string
+              part3 = drop 9 string
+    main :: IO ()
+    main = print (rvrs string)
+```
