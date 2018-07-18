@@ -6,7 +6,7 @@
 We’ll give you a lambda expression. Keeping in mind both alpha equivalence and how multiple heads are nested, choose an answer that is equivalent to the listed lambda term.
 
 
-𝜆xy.xz\
+𝜆xy.xz
 
 a)  𝜆𝑥𝑧.𝑥𝑧\
 b)  𝜆𝑚𝑛.𝑚𝑧\
