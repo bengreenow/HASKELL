@@ -6,10 +6,10 @@
 We’ll give you a lambda expression. Keeping in mind both alpha equivalence and how multiple heads are nested, choose an answer that is equivalent to the listed lambda term.
 
 
-𝜆xy.xz
+𝜆xy.xz\
 
-a)  𝜆𝑥𝑧.𝑥𝑧
-b)  𝜆𝑚𝑛.𝑚𝑧
+a)  𝜆𝑥𝑧.𝑥𝑧\
+b)  𝜆𝑚𝑛.𝑚𝑧\
 c)  𝜆𝑧.(𝜆𝑥.𝑥𝑧)
 
 ---
@@ -20,8 +20,8 @@ B, symbols are simply placeholders and are interchangeable
 
 𝜆𝑥𝑦.𝑥𝑥𝑦
 
-a)  𝜆𝑚𝑛.𝑚𝑛𝑝
-b)  𝜆𝑥.(𝜆𝑦.𝑥𝑦)
+a)  𝜆𝑚𝑛.𝑚𝑛𝑝\
+b)  𝜆𝑥.(𝜆𝑦.𝑥𝑦)\
 c)  𝜆𝑎.(𝜆𝑏.𝑎𝑎𝑏)
 
 ---
@@ -32,8 +32,8 @@ C, attempting substitution of a = x, b = y, results in same expression
 
 𝜆𝑥𝑦𝑧.𝑧𝑥
 
-a)  𝜆𝑥.(𝜆𝑦.(𝜆𝑧.𝑧))
-b)  𝜆𝑡𝑜𝑠.𝑠𝑡
+a)  𝜆𝑥.(𝜆𝑦.(𝜆𝑧.𝑧))\
+b)  𝜆𝑡𝑜𝑠.𝑠𝑡\
 c)  𝜆𝑚𝑛𝑝.𝑚𝑛
 
 ---
