@@ -13,24 +13,24 @@ what you think a function of that type would do.
 
 ---
 
-a) not\
-_ :: Bool -> Bool
+a) `not`\
+`_ :: Bool -> Bool`
 
 ---
-b) length\
-_ :: [a] -> Int
+b) `length`\
+`_ :: [a] -> Int`
 
 ---
-c) concat\
-_ :: [[a]] -> [a]
+c) `concat`\
+`_ :: [[a]] -> [a]`
 
 ---
-d) head\
-_ :: [a] -> a
+d) `head`\
+`_ :: [a] -> a`
 
 ---
-e) (<)\
-_ :: Ord a => a -> a -> Bool
+e) `(<)`\
+`_ :: Ord a => a -> a -> Bool`
 
 ---
 
