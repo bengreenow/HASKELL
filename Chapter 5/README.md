@@ -54,14 +54,39 @@ bind the signature to.
 
 ### 1
 
- If the type of `f` is `a -> a -> a -> a`, and the type of 𝑥 is Char
+If the type of `f` is `a -> a -> a -> a`, and the type of `x` is `Char`
 then the type of `f x` is
 
 ---
 
 ```haskell
-a) Char -> Char -> Char
+a) Char -> Char -> Char-- this one, as when f x is run, the 'a' becomes the determined type of 'Char'
 b) x -> x -> x -> x
 c) a -> a -> a
 d) a -> a -> a -> Char
+```
+---
+
+### 2
+
+If the type of `g` is `a -> b -> c -> b`, then the type of
+`g 0 'c' "woot"` is
+
+```haskell
+a) String
+b) Char -> String
+c) Int
+d) Char-- maybe this one idk
+```
+---
+
+### 3
+
+If the type of `h` is `(Num a, Num b) => a -> b -> b`, then thetype of`h 1.0 2` is:
+
+```haskell
+a) Double
+b) Integer
+c) Integral b => b
+d) Num b => b
 ```
