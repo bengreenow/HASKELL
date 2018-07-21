@@ -34,3 +34,34 @@ e) `(<)`\
 
 ---
 
+## Exercise 2 Type Arguments
+
+
+Given a function and its type, tell us what type results from
+applying some or all of the arguments.
+You can check your work in the REPL like this (using the
+first question as an example):
+
+```haskell
+Prelude> let f :: a -> a -> a -> a; f = undefined
+Prelude> let x :: Char; x = undefined
+Prelude> :t f x
+```
+
+It turns out that you can check the types of things that aren’t
+implemented yet, so long as you give GHCi an undefined to
+bind the signature to.
+
+### 1
+
+ If the type of `f` is `a -> a -> a -> a`, and the type of 𝑥 is Char
+then the type of `f x` is
+
+---
+
+```haskell
+a) Char -> Char -> Char
+b) x -> x -> x -> x
+c) a -> a -> a
+d) a -> a -> a -> Char
+```
