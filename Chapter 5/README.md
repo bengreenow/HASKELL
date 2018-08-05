@@ -247,8 +247,8 @@ myConcat x = x ++ " yo"
 ```
 
 `myConcat :: [Char] -> [Char] -> [Char]`
-
 As the `a` is defined as a `String`
+
 ```haskell
 2. -- General function
 (*) :: Num a => a -> a -> a
@@ -257,10 +257,249 @@ myMult x = (x / 3) * 5
 ```
 
 `myMult :: Int -> Int`
-
 As even though the `x` is unknown, as the `5` is int, so is the `x/3`.
+
+```haskell
 3. take :: Int -> [a] -> [a]
 myTake x = take x "hey you"
+```
+
+`myTake :: Int -> [Char]`
+`[a]` is defined as a string.
+
+```haskell
 4. (>) :: Ord a => a -> a -> Bool
 myCom x = x > (length [1..10])
 ```
+
+`myCom :: Ord a -> Bool`
+
+```haskell
+5. (<) :: Ord a => a -> a -> Bool
+myAlph x = x < 'z'
+```
+
+`myAlph :: Char -> Bool`
+`'z'` defines a as a `Char`.
+
+## Chapter Exercises
+
+Welcome to another round of “Knowing is not enough; we must
+apply.
+
+### Multiple choice
+
+1. A value of type `[a]` is
+a) a list of alphabetic characters
+b) a list of lists
+c) a list whose elements are all of some type 𝑎
+d) a list whose elements are all of different types
+
+---
+
+C
+
+---
+
+2. A function of type `[[a]] -> [a]` could
+a) take a list of strings as an argument
+b) transform a character into a string
+c) transform a string into a list of strings
+d) take two arguments
+
+---
+
+A
+
+---
+
+3. A function of type `[a] -> Int -> a`
+a) takes one argument
+b) returns one element of type 𝑎 from a list
+c) must return an Int value
+d) is completely fictional
+
+---
+
+B
+
+---
+
+4. A function of type `(a, b) -> a`
+a) takes a list argument and returns a Char value
+b) has zero arguments
+c) takes a tuple argument and returns the first value
+d) requires that 𝑎 and 𝑏 be of different types
+
+---
+
+C - It doesnt _have_ too return the first value, but it returns a value of the same type. This answer is the most correct.
+
+---
+
+###Determine the type
+
+For the following functions, determine the type of the specified value.
+We suggest you type them into a file and load the contents of the file
+in GHCi. In all likelihood, it initially will not have the polymorphic
+types you might expect due to the monomorphism restriction. That
+means that top-level declarations by default will have a concrete type
+if any can be determined. You can fix this by setting up your file like
+so:
+
+```haskell
+{-# LANGUAGE NoMonomorphismRestriction #-}
+module DetermineTheType where
+-- simple example
+example = 1
+```
+
+If you had not included the `NoMonomorphismRestriction` extension,
+`example` would have had the type `Integer` instead of `Num a => a`. Do
+your best to determine the most polymorphic type an expression
+could have in the following exercises.
+
+---
+
+1. All function applications return a value. Determine the value
+returned by these function applications and the type of that
+value.
+
+```haskell
+a) (* 9) 6 -- 54, (* 9) 6 :: Num a => a
+b) head [(0,"doge"),(1,"kitteh")] -- (0,"doge"),  (0,"doge") :: Num a => (a, [Char])
+c) head [(0 :: Integer ,"doge"),(1,"kitteh")] -- (0, "doge"),  (0, "doge") :: (Integer,[Char])
+d) if False then True else False -- False, False :: Bool
+e) length [1, 2, 3, 4, 5] -- 5, Integer
+f ) (length [1, 2, 3, 4]) > (length "TACOCAT") -- False, False :: Bool
+```
+
+---
+
+2. Given
+```haskell
+x = 5
+y = x + 5
+w = y * 10
+```
+What is the type of `w`?
+
+`Num a => a`
+
+---
+
+3. Given
+
+```hakell
+x = 5
+y = x + 5
+z y = y * 10
+```
+
+What is the type of `z`?
+
+`Num a => a -> a`
+
+---
+
+4. Given
+
+```haskell
+x = 5
+y = x + 5
+f = 4 / y
+```
+
+What is the type of `f`?
+
+`Fractional a => a`
+
+---
+
+5. Given
+
+```haskell
+x = "Julie"
+y = " <3 "
+z = "Haskell"
+f = x ++ y ++ z
+```
+
+What is the type of `f`?
+
+`[Char]`
+
+### Does it compile?
+
+For each set of expressions, figure out which expression, if any, causes
+the compiler to squawk at you (n.b. we do not mean literal squawking)
+and why. Fix it if you can
+
+```haskell
+1. bigNum = (^) 5 $ 10
+   wahoo = bigNum $ 10 -- No, as here bigNum is simply a number, and the, yet it's treated like a function here.
+
+   -- wahoo = bigNum
+```
+
+```haskell
+2. x = print
+   y = print "woohoo!"
+   z = x "hello world"
+   -- This would compile
+```
+
+```haskell
+3. a = (+)
+   b = 5
+   c = b 10 -- The compiler expects b to be some sort of function as you cannot simply store data like this. Would not compile
+   d = c 200
+
+   -- c = a b 10
+   -- d = a c 200
+```
+
+```haskell
+4. a = 12 + b
+   b = 10000 * c -- c not in scope (or defined.)
+
+
+   -- c = 20
+```
+
+### Type variable or specific type constructor?
+
+1. You will be shown a type declaration, and you should categorize
+each type. The choices are a fully polymorphic type variable,
+constrained polymorphic type variable, or concrete type constructor.
+
+```haskell
+f :: Num a => a -> b -> Int -> Int
+--           [0]  [1]   [2]    [3]
+```
+Here, the answer would be: constrained polymorphic (Num) ([0]),
+fully polymorphic ([1]), and concrete ([2] and [3]).
+
+---
+
+2. Categorize each component of the type signature as described
+in the previous example.
+
+```haskell
+f :: zed -> Zed -> Blah
+```
+
+Fully polymorphic (zed), concrete (Zed), concrete (Blah)
+
+---
+
+3. Categorize each component of the type signature
+```haskell
+f :: Enum b => a -> b -> C
+```
+
+Fully polymorphic, Constrained polymorphic (Enum), concrete.
+
+---
+
+4. Categorize each component of the type signature
