@@ -289,10 +289,10 @@ apply.
 
 ### Multiple choice
 
-1. A value of type `[a]` is
-a) a list of alphabetic characters
-b) a list of lists
-c) a list whose elements are all of some type 𝑎
+1. A value of type `[a]` is\
+a) a list of alphabetic characters\
+b) a list of lists\
+c) a list whose elements are all of some type 𝑎\
 d) a list whose elements are all of different types
 
 ---
@@ -301,10 +301,10 @@ C
 
 ---
 
-2. A function of type `[[a]] -> [a]` could
-a) take a list of strings as an argument
-b) transform a character into a string
-c) transform a string into a list of strings
+2. A function of type `[[a]] -> [a]` could\
+a) take a list of strings as an argument\
+b) transform a character into a string\
+c) transform a string into a list of strings\
 d) take two arguments
 
 ---
@@ -313,10 +313,10 @@ A
 
 ---
 
-3. A function of type `[a] -> Int -> a`
-a) takes one argument
-b) returns one element of type 𝑎 from a list
-c) must return an Int value
+3. A function of type `[a] -> Int -> a`\
+a) takes one argument\
+b) returns one element of type 𝑎 from a list\
+c) must return an Int value\
 d) is completely fictional
 
 ---
@@ -325,10 +325,10 @@ B
 
 ---
 
-4. A function of type `(a, b) -> a`
-a) takes a list argument and returns a Char value
-b) has zero arguments
-c) takes a tuple argument and returns the first value
+4. A function of type `(a, b) -> a`\
+a) takes a list argument and returns a Char value\
+b) has zero arguments\
+c) takes a tuple argument and returns the first value\
 d) requires that 𝑎 and 𝑏 be of different types
 
 ---
@@ -337,7 +337,7 @@ C - It doesnt _have_ too return the first value, but it returns a value of the s
 
 ---
 
-###Determine the type
+### Determine the type
 
 For the following functions, determine the type of the specified value.
 We suggest you type them into a file and load the contents of the file
@@ -503,3 +503,201 @@ Fully polymorphic, Constrained polymorphic (Enum), concrete.
 ---
 
 4. Categorize each component of the type signature
+
+
+```haskell
+f :: f -> g -> C
+```
+
+Fully polymorphic, fully polymorpic, concrete.
+
+
+### Write a type signature
+
+For the following expressions, please add a type signature. You should be able to rely on GHCi type inference to check your work, although you might not have precisely the same answer as GHCi gives (due to polymorphism, etc).
+
+---
+
+1. While we haven’t fully explained this syntax yet, you’ve seen it in Chapter 2 and as a solution to an exercise in Chapter 4. This syntax is a way of destructuring a single element of a list by pattern matching.
+
+```haskell
+functionH :: [a] -> a
+functionH (x:_) = x
+```
+
+---
+
+
+```haskell
+2. functionC :: Num a => a -> Bool
+   functionC x y =
+      if (x > y) then True else False
+```
+
+---
+
+
+```haskell
+3. functionS :: (a, b) -> b
+   functionS (x, y) = y
+```
+
+### Given a type, write the function
+
+
+You will be shown a type and a function that needs to be writ- ten. Use the information the type provides to determine what the function should do. We’ll also tell you how many ways there are to write the function. Syntactically different but semantically equivalent implementations are not counted as being different. For example, writing a function one way then rewriting the semantically identical function but using anony- mous lambda syntax does not count as two implementations.
+To make things a little easier, we’ll demonstrate how to solve this kind of exercise. Given:
+
+```haskell
+myFunc :: (x -> y) -> (y -> z)
+   -> c
+   -> (a, x) -> (a, z)
+myFunc xToY yToZ _ (a, x) = undefined
+```
+
+Talking through the above, we have a function that takes four arguments. The final result is a tuple with the type (a, z). It turns out, the 𝑐 argument is nowhere in our results and there’s nothing to do with it, so we use the underscore to ignore that. We named the two function arguments by their types and pattern matched on the tuple argument. The only way to get the second value of the tuple from the type 𝑥 to the type 𝑧 is to use both of the functions furnished to us. If we tried the following:
+
+```haskell
+myFunc xToY yToZ _ (a, x) =
+   (a, (xToY x))
+```
+
+We would get a type error that it expected the type 𝑧 but the actual type was 𝑦. That’s because we’re on the right path, but not quite done yet! Accordingly, the following should typecheck:
+
+```haskell
+myFunc :: (x -> y) -> (y -> z)
+-> c
+-> (a, x) -> (a, z)
+myFunc xToY yToZ _ (a, x) = (a, (yToZ (xToY x)))
+```
+
+---
+
+
+1. There is only one function definition that typechecks and doesn’t go into an infinite loop when you run it.
+
+```haskell
+i :: a -> a
+i x = x
+```
+
+2. There is only one version that works.
+
+```haskell
+c :: a -> b -> a
+c x y = x
+```
+
+3. Given alpha equivalence are `c''` and `c` (see above) the same thing?
+
+Yes.
+
+```haskell
+c'' :: b -> a -> b
+c'' x y = x
+```
+
+4. Only one version that works.
+
+```haskell
+c' :: a -> b -> b 
+c' x y = y
+```
+
+5. There are multiple possibilities, at least two of which
+you’ve seen in previous chapters.
+
+```haskell
+r :: [a] -> [a]
+r x = reverse x
+```
+
+6. Only one version that will typecheck.
+
+```haskell
+co :: (b -> c) -> (a -> b) -> a -> c
+co x y z = y
+```
+
+7. One version will typecheck.
+
+```haskell
+a :: (a -> c) -> a -> a
+a x y = x
+```
+
+8. One version will typecheck.
+```haskell
+a' :: (a -> b) -> a -> b 
+a' x y = y
+```
+
+### Fix it
+
+Won’t someone take pity on this poor broken code and fix it up? Be sure to check carefully for things like capitalization, parentheses, and indentation.
+
+1.
+```haskell
+   module sing where
+     fstString :: [Char] ++ [Char]
+     fstString x = x ++ " in the rain"
+
+     sndString :: [Char] -> Char
+     sndString x = x ++ " over the rainbow"
+
+     sing = if (x > y) then fstString x or sndString y
+     where x = "Singin"
+           x = "Somewhere"
+```
+
+```haskell
+   module sing where
+     fstString :: [Char] -> [Char]
+     fstString x = x ++ " in the rain"
+
+     sndString :: [Char] -> [Char]
+     sndString x = x ++ " over the rainbow"
+
+     sing = if (x > y) then 
+         fstString x or sndString y
+            where x = "Singin"
+                  y = "Somewhere"
+```
+
+2. Now that it’s fixed, make a minor change and make it sing the other song. If you’re lucky, you’ll end up with both songs stuck in your head!
+
+```haskell
+   module sing where
+     fstString :: [Char] -> [Char]
+     fstString x = x ++ " in the rain"
+
+     sndString :: [Char] -> [Char]
+     sndString x = x ++ " over the rainbow"
+
+     sing = if (x < y) then 
+         fstString x or sndString y
+            where x = "Singin"
+                  y = "Somewhere"
+```
+
+3.
+```haskell
+module Arith3Broken where
+main :: IO ()
+Main = do
+   print 1 + 2
+   putStrLn 10
+   print (negate -1) print ((+) 0 blah)
+   where blah = negate 1
+```
+
+```haskell
+module Arith3Broken where
+   main :: IO ()
+   main = do
+      print 1 + 2
+      putStrLn 10
+      print (negate -1)
+      print ((+) 0 blah)
+      where blah = negate 1
+```
